@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+
+  node:
+    image: node
+    restart: always
+    ports:
+      - 5000:${PORT}
+    working_dir: /app
+    volumes:
+      - ./Backend:/app
+    command: sh -c "npm i && node index.js"
+    environment:
+      MONGODB_URL: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongo
+      PORT: ${PORT}
