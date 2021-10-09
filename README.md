@@ -1,4 +1,4 @@
-# DevGev_VTB
+# GevDev_VTB
 
 ## Запуск
 
