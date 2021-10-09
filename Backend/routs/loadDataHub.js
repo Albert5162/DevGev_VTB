@@ -69,7 +69,7 @@ router.post('/parse_dataHub', async ctx => {
         let arr_datasets = data.data?.data?.browse?.entities
         if (arr_datasets.length) {
             arr_datasets.forEach(ds => {
-                datasets.push({...ds, path: path.join("."), user_id: ctx.state.user._id, active: 0})
+                datasets.push({...ds, path: path.join("."), user_id: ctx.state.user._id, active: 1})
             })
         }
         if (groups.length) {

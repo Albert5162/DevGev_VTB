@@ -1,0 +1,119 @@
+{
+    "first-dataset": [
+        {
+            "$aggregate": {
+                "datasets": {
+                    "0": "Albert5162/directory-one/store_one",
+                    "1": "Albert5162/directory-one/store_two",
+                    "2": "Albert5162/directory-two/store_three"
+                },
+                "merge": {
+                    "store_id": ["0.index", "1.store_id", "2.store_id"],
+                    "total": ["0.total", "1.maintenance", "2.total_cost"],
+                    "$keep_others": true
+                },
+                "drop_unmerged": true
+            }
+        }
+    ],
+    "second-dataset": [
+        {
+            "$aggregate": {
+                "datasets": {
+                    "0": "Albert5162/inventory"
+                }
+            }
+        },
+        {
+            "$attach": {
+                "store_id": {
+                    "$to_int": "inventory_id_str"
+                }
+            }
+        }
+    ],
+    "third-dataset": [
+        {
+            "$from": "second-dataset"
+        },
+        {
+            "$right_join": {
+                "dataset": "first-dataset",
+                "local_field": "store_id",
+                "foreign_field": "store_id"
+            }
+        },
+        {
+            "$attach": {
+                "value": {
+                    "$multiply": ["count", "price"]
+                }
+            }
+        },
+        {
+            "$split": {
+                "by": "employees",
+                "as": "employee"
+            }
+        },
+        {
+            "$attach": {
+                "median_time_worked": {
+                    "$median": "employee.hours"
+                }
+            }
+        }
+    ],
+    "fourth-dataset": [
+        {
+            "$aggregate": {
+                "datasets": {
+                    "0": "Albert5162/staff/personal_data"
+                }
+            }
+        },
+        {
+            "$inner_join": {
+                "dataset": "third-dataset",
+                "local_field": "id",
+                "foreign_field": "employee.id"
+            }
+        },
+        {
+            "$filter": {
+                "assume": {
+                    "median_pay": {
+                        "$multiply": ["median_time_worked", "paid_per_hour"]
+                    },
+                    "score": {
+                        "$divide": ["median_pay", "age"]
+                    }
+                },
+                "conditions": [
+                    {
+                        "age": {
+                            "$gte": 25
+                        },
+                        "median_pay": {
+                            "$gte": 22.5
+                        },
+                        "score": {
+                            "$lt": 3
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "$attach": {
+                "last_item_sold": "items_sold.-1"
+            }
+        }
+    ],
+    "$sample": {
+        "from": "fourth-dataset",
+        "size": 30,
+        "replacement": false,
+        "seed": 56456123586095823459
+    }
+}
