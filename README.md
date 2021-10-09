@@ -48,7 +48,7 @@ module.exports = {
 
 **Структура dbProvider:**
 
-```json
+```jsx
 {
   meta_datasets: {
     addInfo: [AsyncFunction: addInfo],
