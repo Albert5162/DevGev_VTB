@@ -1,8 +1,11 @@
 version: "3.9"
+
 services:
   mongo:
     image: mongo
     restart: always
+    volumes:
+      - "db-store:/data/db"
     ports:
       - 27017:27017
     environment:
@@ -21,3 +24,6 @@ services:
     environment:
       MONGODB_URL: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongo
       PORT: ${PORT}
+
+volumes:
+  db-store:

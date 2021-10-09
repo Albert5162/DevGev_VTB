@@ -13,6 +13,11 @@ module.exports = {
                 '$addFields': {
                     'fichers': {
                         '$size': '$schemaMetadata.fields'
+                    },
+                    'fk': {
+                        '$ifNull': [
+                            '$schemaMetadata.foreignKeys', []
+                        ]
                     }
                 }
             }, {
@@ -30,13 +35,18 @@ module.exports = {
                     'description': 1,
                     'user': {
                         '$first': '$user.company'
+                    },
+                    'fk': {
+                        '$size': '$fk'
                     }
                 }
             }
         ])
         await data.forEach(data => meta_datasets.push(data));
         return meta_datasets
-        console.log(data)
+    },
+    async getByURN(urn) {
+        return await meta_datasetsModel.findOne({urn, active: 1})
     }
 
 }
