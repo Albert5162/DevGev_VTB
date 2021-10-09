@@ -1,5 +1,3 @@
-# VTB
-
 # DevGev_VTB
 
 ## Запуск
