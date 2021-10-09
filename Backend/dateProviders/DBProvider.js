@@ -4,7 +4,7 @@ const {readdir} = require('fs/promises');
 async function create_models() {
     try {
         global.con = await db;
-        let Files = await readdir('DateProviders/Providers');
+        let Files = await readdir('dateProviders/Providers');
         let dbProvider = {}
         for (let File of Files) {
             let provider = require('./Providers/' + File);

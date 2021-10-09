@@ -14,6 +14,7 @@ const query = gql`
          schemaMetadata(version: 0) {
           name
           fields {
+            description
             fieldPath
             type
           }

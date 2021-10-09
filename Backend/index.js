@@ -5,8 +5,8 @@ const koaBody = require('koa-bodyparser');
 const serve = require('koa-static');
 const graphqlHTTP = require('koa-graphql');
 require('dotenv').config()
-const query = require('./GraphQL/shema');
-const dataProvider = require('./DateProviders/DBProvider');
+const query = require('./graphQL/shema');
+const dataProvider = require('./dateProviders/DBProvider');
 const authMiddleware = require('./lib/authMidlleware')();
 
 
