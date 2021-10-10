@@ -154,6 +154,29 @@ module.exports = router
 ```
 </p>
 </details>
+<details>
+<summary>sampling</summary>
+<p>
+В данном коталоге храняться задания на формирование датасетов. 
+Сейчас там хранится пример такого файла sampling-examples.json
+
+**Структура файла:**
+
+```jsx
+const Router = require('@koa/router');
+const router = new Router();
+
+router.post("/route", async ctx => {
+})
+
+router.get("/route", async ctx => {
+
+})
+
+module.exports = router
+```
+</p>
+</details>
 
 ### index.js
 
