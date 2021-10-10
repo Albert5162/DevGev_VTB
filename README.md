@@ -202,6 +202,13 @@ app.use(require('./routs/file').routes());
 
 **В планах подключить Google, используя OAuth 1.0 и OAuth 2.0.**
 
+## Интеграция с DataHub
+Наша платформа имеет интеграцию с сервисом [DataHub](https://github.com/linkedin/datahub).
+
+Вам требуется создать на плаьтформе аккаунт и проставить ему доступы к метаданным которые хотите загрузить на нашу плащадку.
+
+Для демонстрации используйте http://datahub.yc.pbd.ai:9002 datahub:datahub
+
 # DB
 Получить доступ к MongoDB можно используя [MongoDB Compass](https://www.mongodb.com/try/download/compass)
 
