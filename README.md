@@ -6,21 +6,21 @@
 - Открыть терминал
 - Клонировать репозиторий
     
-    ```bash
-       git clone https://github.com/Albert5162/DevGev_VTB.git
-    ```
+```bash
+git clone https://github.com/Albert5162/DevGev_VTB.git
+```
     
 - Перейти в папку репозитория
     
-    ```bash
-      cd GevDev_VTB
-    ```
+```bash
+cd GevDev_VTB
+```
     
 - Запустить проект
     
-    ```bash
-      docker-compose up -d
-    ```
+```bash
+docker-compose up -d
+```
     
 - Дождаться запуска и перейти по ссылке [GevDev](http://localhost:5000/)
 
