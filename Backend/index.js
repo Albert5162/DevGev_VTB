@@ -21,6 +21,7 @@ app.use( (ctx, next) => {
     return next()
 });
 app.use(koaBody());
+app.use(serve("./public"))
 app.use(require('./routs/authorization').routes())
 //Далее только авторизированые
 app.use(authMiddleware);
