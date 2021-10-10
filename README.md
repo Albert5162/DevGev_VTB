@@ -7,7 +7,7 @@
 - Клонировать репозиторий
     
     ```bash
-       git clone <https://github.com/Albert5162/DevGev_VTB.git>
+       git clone https://github.com/Albert5162/DevGev_VTB.git
     ```
     
 - Перейти в папку репозитория
@@ -119,7 +119,7 @@ module.exports.resolve = async (parent = {}, args, {state: {user}}) => {
 }
 ```
 
-Далее файл ./shema.js формирует конечный GraphQLSchema объект на основе файлов в папках.
+Далее файл ./schema.js формирует конечный GraphQLSchema объект на основе файлов в папках.
 
 GraphQL запросы принимаются по конечному пути /graphql (требуется авторизация)
 </p>
@@ -135,7 +135,7 @@ GraphQL запросы принимаются по конечному пути /
 <details>
 <summary>routs</summary>
 <p>
-Данный каталог содержит в себе файлы для формирования REST API использую библиотеку "@koa/router"
+Данный каталог содержит в себе файлы для формирования REST API, использую библиотеку "@koa/router"
 
 **Структура файла:**
 
@@ -161,7 +161,7 @@ module.exports = router
 
 В данном файле запускаются все службы проекта и настраивается HTTP сервер на базе "koa"
 
-Все файлы из папки ./routs требуется подключить в ручную методом добавления middleware
+Все файлы из папки ./routs требуется подключить вручную методом добавления middleware
 
 Пример:
 
@@ -177,8 +177,15 @@ app.use(require('./routs/file').routes());
 
 Не авторизированный пользователь имеет доступ только к конечным точкам /sign_in и /registration
 
+**В планах подключить Google, используя OAuth 1.0 и OAuth 2.0.**
 
+# DB
+Получить доступ к MongoDB можно используя [MongoDB Compass](https://www.mongodb.com/try/download/compass)
 
+Ссылка для подключения:
+```
+mongodb://root:secret@localhost:27017
+```
 # DSL
 
 ## Пример создания выборки с использованием нескольких датасетов
