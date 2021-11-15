@@ -1,5 +1,8 @@
 # GevDev_VTB
 
+## Видео презентация
+[![Видео презентация](https://img.youtube.com/vi/PFBLFZxhWVY/0.jpg)](https://www.youtube.com/watch?v=PFBLFZxhWVY)
+
 ## Запуск
 
 - Установить [Docker](https://www.docker.com/get-started)
